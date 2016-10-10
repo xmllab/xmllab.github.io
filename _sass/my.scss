@@ -1,0 +1,25 @@
+.feature .header-title .header-title-wrap {
+  vertical-align: top;
+  text-align: left;
+  padding-left: 120px;
+  h1 {
+    margin-left: 0px;
+    font-size: 2rem;
+  }
+}
+
+table {
+  background: {
+    color: white;
+  }
+  border: {
+    style: solid;
+    width: 1px;
+    color: #666;
+    collapse: collapse;
+  }
+  td, th {
+    padding: 3px 8px;
+    border: solid 1px #666;
+  }
+}
