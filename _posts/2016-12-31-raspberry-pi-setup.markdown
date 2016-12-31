@@ -13,7 +13,7 @@ MacでRaspberryPiのインストールと初期設定を行う手順のメモで
 気がついたらRaspbianもsystemdベースになっていたので、[以前作ったRaspberryPi用のRecipe](https://github.com/tk-hamaguchi/itamae-plugin-recipe-raspberry_pi/blob/master/lib/itamae/plugin/recipe/raspberry_pi.rb)をベースにいくつか追加しています。
 
 
-1. Raspbianをダウンロードする
+Raspbianをダウンロードする
 --------
 
 [Raspbianのダウンロードサイト](https://www.raspberrypi.org/downloads/raspbian/)からRASPBIAN JESSIE LITEのZipをダウンロードします
@@ -25,7 +25,7 @@ bash-3.2$ ls ~/Downloads/2016-11-25-raspbian-jessie-lite.img
 ```
 
 
-2. SDカードへイメージを書き込む
+SDカードへイメージを書き込む
 --------
 
 RaspberryPiで使うMicroSDをメモリーカードリーダーを使ってMacに接続し、フォーマットを実行します
@@ -67,7 +67,7 @@ bash-3.2$
 
 書き込み完了後、MicroSDをMacから抜き出し、RaspberryPiへ差し込みます。
 
-3. RaspberryPiへのシリアル接続する
+RaspberryPiへのシリアル接続する
 --------
 
 まずGPIO経由でRaspberryPiとMacをシリアル接続します。
@@ -98,7 +98,7 @@ Raspbian GNU/Linux 8 raspberrypi ttyAMA0
 raspberrypi login:
 ```
 
-4. RaspberryerryPiにログインする
+RaspberryerryPiにログインする
 --------
 
 ここで下記を入力します
@@ -131,7 +131,7 @@ pi@raspberrypi:~$ sudo su -
 root@raspberrypi:~# 
 ```
 
-5. swap領域の無効化
+swap領域の無効化
 --------
 
 Raspbianはswap領域としてSDカードを利用します。これはSDカードの寿命を縮める原因の一つとなるため、無効化します。
@@ -173,7 +173,7 @@ Processing triggers for man-db (2.7.0.2-5) ...
 root@raspberrypi:~# 
 ```
 
-6. 時刻同期ツールの設定
+時刻同期ツールの設定
 --------
 
 RaspberryPiが起動するタイミングでNTPによる時刻同期を行うよう、にする。実際にはNTPデーモンを停止し、起動シーケンスの中で`ntpdate`コマンドにより時刻同期を実現する。
@@ -232,7 +232,7 @@ Processing triggers for libc-bin (2.19-18+deb8u6) ...
 root@raspberrypi:~# 
 ```
 
-7. 起動時シーケンスを設定
+起動時シーケンスを設定
 --------
 
 `/etc/fstab`と`/etc/rc.local`を編集して起動シーケンスを設定します。
@@ -291,7 +291,7 @@ EOT
 root@raspberrypi:~# 
 ```
 
-8. RaspberryPiのroot領域を拡大する
+RaspberryPiのroot領域を拡大する
 --------
 
 `raspi-config`コマンドで領域をいっぱいいっぱいまで拡げます。
@@ -301,7 +301,7 @@ root@raspberrypi:~# raspi-config --expand-rootfs
 root@raspberrypi:~# 
 ```
 
-9. 再起動の実行
+再起動の実行
 --------
 
 ここまできたらとりあえず再起動を行います
@@ -329,7 +329,7 @@ pi@raspberrypi:~$ sudo su -
 root@raspberrypi:~# 
 ```
 
-10. WiFiの設定を行う
+WiFiの設定を行う
 --------
 
 RaspberryPi3の場合はWiFiが内蔵されてます。それ以外のWiFi非搭載モデルの場合はBuffaloのWLI-UC-GNMとかを使って繋ぎます。（挿して起動するだけでwlan0として認識されます）
@@ -373,7 +373,7 @@ root@raspberrypi:~# ip a s wlan0 | grep 'inet '
 root@raspberrypi:~# 
 ```
 
-11. 各種アップデートの実行
+各種アップデートの実行
 --------
 
 まず各パッケージをアップデートします。
@@ -463,7 +463,7 @@ root@raspberrypi:~# apt-get autoclean -y -qq
 root@raspberrypi:~# 
 ```
 
-12. 不要なサービスの停止
+不要なサービスの停止
 --------
 
 RaspberryPiの起動時間を短縮するため、不要なサービスを停止します
@@ -493,7 +493,7 @@ insserv: warning: current stop runlevel(s) (0 1 2 3 4 5 6) of script `triggerhap
 root@raspberrypi:~# 
 ```
 
-13. タイムゾーンの変更
+タイムゾーンの変更
 --------
 
 RaspbianはデフォルトのタイムゾーンはUTCになっているため、JSTに変更します。
@@ -502,7 +502,7 @@ RaspbianはデフォルトのタイムゾーンはUTCになっているため、
 root@raspberrypi:~# timedatectl set-timezone Asia/Tokyo
 ```
 
-14. ログイン後バナーの変更
+ログイン後バナーの変更
 --------
 
 必要に応じてログイン後に表示されるバナーを修正します。
@@ -513,7 +513,7 @@ root@raspberrypi:~# echo '' > /etc/motd
 root@raspberrypi:~# 
 ```
 
-15. SSHデーモンの有効化
+SSHデーモンの有効化
 ---------
 
 SSHデーモンを起動し、シリアル接続をしなくてもつながるようにします。
@@ -534,7 +534,7 @@ root@raspberrypi:~# systemctl status ssh | grep Active:
 root@raspberrypi:~# 
 ```
 
-16. 仕上げに再起動する
+仕上げに再起動する
 --------
 
 最後に再起動して接続の確認を始めます。
@@ -546,7 +546,7 @@ root@raspberrypi:~# reboot
 ネットワーク接続が成功していれば、起動中に`My IP address is 192.168.0.12 `のような形でRaspberryPiのIPアドレスが表示されます。
 
 
-17. SSHでの接続確認
+SSHでの接続確認
 --------
 
 ログインプロンプトが出ていることを確認したら、ターミナルをもう一つ開いてSSHしてみましょう。
@@ -590,7 +590,7 @@ bash-3.2$
 bash-3.2$ exit
 ```
 
-18. シリアル接続の切断
+シリアル接続の切断
 --------
 
 SSHで接続できるようになったので、`screen`を終了し、シリアル接続を切断します。
@@ -616,7 +616,8 @@ screenが切断され、元のターミナルに戻ってきます。
 
 ここまできたらGPIOからシリアルアダプタを取り外して完了です。
 
-19. 今後
+
+今後
 --------
 
 今後はSSHベースでの作業になるので、パスワードの変更等必要に応じて行いましょう。
