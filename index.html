@@ -11,18 +11,24 @@ image:
 {% for post in paginator.posts %}
 <article class="hentry">
   <header>
-    {% if post.image.feature %}
-      <div class="entry-image-index">
-        <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}"><img src="{{ site.url }}/images/{{ post.image.feature }}" alt="{{ post.title }}"></a>
-      </div><!-- /.entry-image -->
-    {% endif %}
     <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="{{ post.date | date_to_xmlschema }}"><a href="{{ site.url }}{{ post.url }}">{{ post.date | date: "%B %d, %Y" }}</a></time></span><span class="author vcard"><span class="fn"><a href="{{ site.url }}/about/" title="About {{ site.owner.name }}">{{ site.owner.name }}</a></span></span>
-      {% if site.reading_time %}
+      {% if post.image.feature %}
+      <span class="entry-date date published updated"><time datetime="{{ post.date | date_to_xmlschema }}"><a href="{{ site.url }}{{ post.url }}">{{ post.date | date: "%B %d, %Y" }}</a></time></span><span class="author vcard"><span class="fn" style="text-transform: none;"><a href="https://about.me/{{ site.owner.aboutme }}" title="About {{ site.owner.name }}">{{ site.owner.name }}</a></span></span>
+        {% if site.reading_time %}
       <span class="entry-reading-time">
         <i class="fa fa-clock-o"></i>
-        {% include read-time-index.html %}
+          {% include read-time-index.html %}
       </span><!-- /.entry-reading-time -->
+        {% endif %}
+      <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}"><div class="entry-image-index2" style="background-image:url({{ site.url }}/images/{{ post.image.feature }});"></div></a>
+      {% else %}
+      <span class="entry-date date published updated"><time datetime="{{ post.date | date_to_xmlschema }}"><a href="{{ site.url }}{{ post.url }}">{{ post.date | date: "%B %d, %Y" }}</a></time></span><span class="author vcard"><span class="fn" style="text-transform: none;"><a href="https://about.me/{{ site.owner.aboutme }}" title="About {{ site.owner.name }}">{{ site.owner.name }}</a></span></span>
+        {% if site.reading_time %}
+      <span class="entry-reading-time">
+        <i class="fa fa-clock-o"></i>
+          {% include read-time-index.html %}
+      </span><!-- /.entry-reading-time -->
+        {% endif %}
       {% endif %}
     </div><!-- /.entry-meta -->
     {% if post.link %}
