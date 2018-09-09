@@ -3,7 +3,7 @@ layout: post
 title: "helmパッケージ化されたアプリをKubernetes+Istioを使って公開する"
 date: 2018-09-10 07:43:36 +0900
 comments: false
-categories: [Kubernetes, helm, Istio]
+categories: [Kubernetes, helm, Istio, CI/CD]
 image:
   feature: posts/istio-with-helm/title.png
 ---
