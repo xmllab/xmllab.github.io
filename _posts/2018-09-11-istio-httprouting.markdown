@@ -11,7 +11,7 @@ image:
 Istioにはリクエストパスごとに割り振るサービスを設定することができます。
 例えば、`/api/v1/hoge` はAのサービスに、`/api/v2/fuga` はBのサービスに割り振るといった設定です。
 
-これらの機能について、前回の記事『 [helmパッケージ化されたアプリをKubernetes+Istioを使って公開する]() 』で作った環境とhelmパッケージを使って実現方法をまとめていきます。
+これらの機能について、前回の記事『 [helmパッケージ化されたアプリをKubernetes+Istioを使って公開する](http://xmllab.github.io/kubernetes/helm/istio/ci/cd/istio-with-helm/) 』で作った環境とhelmパッケージを使って実現方法をまとめていきます。
 
 まず前回のおさらいですが、今の所全てのリクエストが`foolish-penguin-sample`か、`peeking-rabbit-sample`のサービスに流れる設定になっています。
 
